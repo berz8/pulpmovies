@@ -50,4 +50,5 @@ jobs:
             source ~/.bashrc
             cd /root/pulpmovies/web 
             bun install --production
+            pm2 restart /root/pulpmovies/ecosystem.config.js --only web
 
