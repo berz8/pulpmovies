@@ -2,6 +2,7 @@ import { createRootRoute } from "@tanstack/react-router";
 import { Outlet, ScrollRestoration } from "@tanstack/react-router";
 import { Body, Head, Html, Meta, Scripts } from "@tanstack/start";
 import * as React from "react";
+import appCss from "@/globals.css?url";
 
 export const Route = createRootRoute({
   meta: () => [
@@ -16,6 +17,7 @@ export const Route = createRootRoute({
       title: "TanStack Start Starter",
     },
   ],
+  links: () => [{ rel: "stylesheet", href: appCss }],
   component: RootComponent,
 });
 
@@ -34,7 +36,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Meta />
       </Head>
       <Body>
-        {children}
+        <div className="w-full min-h-screen font-sans">{children}</div>
         <ScrollRestoration />
         <Scripts />
       </Body>
