@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import GoogleAdsense from "@/components/googleAdsense";
 import Link from "next/link";
+import PlausibleProvider from "next-plausible";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,6 +29,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <PlausibleProvider
+          domain="pulpmovies.app"
+          customDomain="analytics.pulpmovies.app"
+          selfHosted
+        />
+      </head>
       <body
         className={`${geistSans.variable} antialiased bg-violet-100 dark:bg-violet-950`}
       >
