@@ -20,21 +20,18 @@ jobs:
           bun-version: latest  # or specify a version
 
       - name: Install dependencies
-        working-directory: ./app/web
+        working-directory: ./apps/web
         run: bun install
 
       - name: Build Next.js app
-        working-directory: ./app/web
+        working-directory: ./apps/web
         run: bun run build
 
       - name: copy build to server 
         uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete
-          path: /app/.next
-          path: /app/public
-          path: /app/package.json
-          path: /app/bun.lockb
+          path: apps/web/.next apps/web/public apps/web/package.json apps/web/bun.lockb
           remote_path: /root/pulpmovies
           remote_host: ${{ secrets.SERVER_IP }} 
           remote_user: ${{ secrets.SERVER_USER }} 
