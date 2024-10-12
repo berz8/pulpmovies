@@ -38,3 +38,13 @@ jobs:
           remote_user: ${{ secrets.SERVER_USER }} 
           remote_key: ${{ secrets.SERVER_SSH_KEY }}
 
+      - name: multiple command
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            cd /root/pulpmovies/web 
+            bun i --production
+
