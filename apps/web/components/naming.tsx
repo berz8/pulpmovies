@@ -57,9 +57,9 @@ export default function Naming() {
           width="292.337"
           height="79.38"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -93,9 +93,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_802_6"
@@ -105,9 +105,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint2_linear_802_6"
@@ -117,9 +117,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint3_linear_802_6"
@@ -129,9 +129,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint4_linear_802_6"
@@ -141,9 +141,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_802_6"
@@ -153,9 +153,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_802_6"
@@ -165,9 +165,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint7_linear_802_6"
@@ -177,9 +177,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint8_linear_802_6"
@@ -189,9 +189,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
         <linearGradient
           id="paint9_linear_802_6"
@@ -201,9 +201,9 @@ export default function Naming() {
           y2="40.9399"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F8F8F8" />
-          <stop offset="0.625" stop-color="#F5EDFF" />
-          <stop offset="1" stop-color="#F7F1FF" />
+          <stop stopColor="#F8F8F8" />
+          <stop offset="0.625" stopColor="#F5EDFF" />
+          <stop offset="1" stopColor="#F7F1FF" />
         </linearGradient>
       </defs>
     </svg>
