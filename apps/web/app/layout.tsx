@@ -30,11 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <PlausibleProvider
-          domain="pulpmovies.app"
-          customDomain="https://analytics.pulpmovies.app"
-          selfHosted
-        />
+        <PlausibleProvider domain="pulpmovies.app" selfHosted />
       </head>
       <body
         className={`${geistSans.variable} antialiased bg-violet-100 dark:bg-violet-950`}
