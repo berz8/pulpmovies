@@ -45,6 +45,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
+            source ~/.bashrc
             cd /root/pulpmovies/web 
-            bun i --production
+            bun install --production
 
