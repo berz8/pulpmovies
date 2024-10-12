@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'apps/web/**'  # Only trigger on changes in app/web folder
+      - '.github/workflows/deploy-prod-web.yml'  # Only trigger on changes in app/web folder
 
 jobs:
   deploy:
@@ -31,7 +32,7 @@ jobs:
         uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete
-          path: apps/web/.next apps/web/public apps/web/package.json apps/web/bun.lockb
+          path: apps/web/.next apps/web/public apps/web/package.json
           remote_path: /root/pulpmovies
           remote_host: ${{ secrets.SERVER_IP }} 
           remote_user: ${{ secrets.SERVER_USER }} 
