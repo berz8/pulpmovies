@@ -1,6 +1,5 @@
 import Logo from "@/components/logo";
 import Naming from "@/components/naming";
-import Link from "next/link";
 
 export default function Home() {
   return (

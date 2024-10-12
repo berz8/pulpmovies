@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Logo from "@/components/logo";
 import Naming from "@/components/naming";
 import Link from "next/link";
