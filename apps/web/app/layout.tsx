@@ -32,7 +32,7 @@ export default function RootLayout({
       <head>
         <PlausibleProvider
           domain="pulpmovies.app"
-          customDomain="analytics.pulpmovies.app"
+          customDomain="https://analytics.pulpmovies.app"
           selfHosted
         />
       </head>
