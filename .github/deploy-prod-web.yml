@@ -1,0 +1,42 @@
+name: Deploy Next.js App with Bun
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'apps/web/**'  # Only trigger on changes in app/web folder
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest  # or specify a version
+
+      - name: Install dependencies
+        working-directory: ./app/web
+        run: bun install
+
+      - name: Build Next.js app
+        working-directory: ./app/web
+        run: bun run build
+
+      - name: copy build to server 
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          path: /app/.next
+          path: /app/public
+          path: /app/package.json
+          path: /app/bun.lockb
+          remote_path: /root/pulpmovies
+          remote_host: ${{ secrets.SERVER_IP }} 
+          remote_user: ${{ secrets.SERVER_USER }} 
+          remote_key: ${{ secrets.SERVER_SSH_KEY }}
+
