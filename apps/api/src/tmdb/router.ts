@@ -21,6 +21,26 @@ export const tmdb = new Elysia({ prefix: "/tmdb" })
       }),
     },
   )
+  .get(
+    "/search/movies",
+    ({ cache, query: { q, page } }) => getSearchMovies(cache, q, page),
+    {
+      query: t.Object({
+        q: t.String(),
+        page: t.Number({ default: 1 }),
+      }),
+    },
+  )
+  .get(
+    "/search/person",
+    ({ cache, query: { q, page } }) => getSearchPerson(cache, q, page),
+    {
+      query: t.Object({
+        q: t.String(),
+        page: t.Number({ default: 1 }),
+      }),
+    },
+  )
   .get("/trending/movies", async ({ cache }) => getTrendingMovies(cache));
 
 async function getMovie(cache: RedisCache, id: number) {
@@ -76,6 +96,58 @@ async function getTrendingMovies(cache: RedisCache) {
   if (tmdbTrending) {
     await cache.set(`trending:movies`, JSON.stringify(tmdbTrending));
     return tmdbTrending;
+  }
+  return error(404);
+}
+
+async function getSearchMovies(
+  cache: RedisCache,
+  query: string,
+  page: number = 1,
+) {
+  let search = await cache.get(`search:movies-query_${query}-page_${page}`);
+  if (search) return JSON.parse(search);
+  const tmdbSearchData = await fetch(
+    `${process.env.TMDB_URL}/search/movie?query=${query}&page=${page}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+      },
+    },
+  );
+  const tmdbSearch = await tmdbSearchData.json();
+  if (tmdbSearch) {
+    await cache.set(
+      `search:movies-query_${query}-page_${page}`,
+      JSON.stringify(tmdbSearch),
+    );
+    return tmdbSearch;
+  }
+  return error(404);
+}
+
+async function getSearchPerson(
+  cache: RedisCache,
+  query: string,
+  page: number = 1,
+) {
+  let search = await cache.get(`search:person-query_${query}-page_${page}`);
+  if (search) return JSON.parse(search);
+  const tmdbSearchData = await fetch(
+    `${process.env.TMDB_URL}/search/person?query=${query}&page=${page}`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+      },
+    },
+  );
+  const tmdbSearch = await tmdbSearchData.json();
+  if (tmdbSearch) {
+    await cache.set(
+      `search:person-query_${query}-page_${page}`,
+      JSON.stringify(tmdbSearch),
+    );
+    return tmdbSearch;
   }
   return error(404);
 }
