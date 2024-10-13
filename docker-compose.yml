@@ -1,0 +1,18 @@
+name: PulpMovies 
+
+services:
+  dragonfly:
+    image: docker.dragonflydb.io/dragonflydb/dragonfly
+    ulimits:
+      memlock: -1
+    network_mode: host
+    volumes:
+      - dragonfly_data:/data
+    command:
+      - "--requirepass"
+      - "password"
+    restart: unless-stopped
+
+volumes:
+  dragonfly_data:
+
