@@ -3,8 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import GoogleAdsense from "@/components/googleAdsense";
-import Link from "next/link";
 import PlausibleProvider from "next-plausible";
+import Footer from "@/components/footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,6 +20,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "#black" },
+  ],
 };
 
 export default function RootLayout({
@@ -32,24 +36,10 @@ export default function RootLayout({
       <head>
         <PlausibleProvider domain="pulpmovies.app" selfHosted />
       </head>
-      <body
-        className={`${geistSans.variable} antialiased bg-violet-100 dark:bg-violet-950`}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={`${geistSans.variable} antialiased bg-background`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
-          <footer className="text-center mt-24">
-            <Link href="/privacy-policy" className="underline mx-4">
-              Privacy Policy
-            </Link>
-            <Link href="/terms-of-service" className="underline mx-4">
-              Terms of Service
-            </Link>
-          </footer>
+          <Footer />
         </ThemeProvider>
       </body>
       <GoogleAdsense pId={process.env.GOOGLE_ADSENSE_PID ?? ""} />
