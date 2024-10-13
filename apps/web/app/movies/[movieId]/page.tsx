@@ -1,6 +1,5 @@
 import { getMovieDetails } from "@/actions/tmdb";
 import MovieCard from "@/components/movieCard";
-import Naming from "@/components/naming";
 import { cn } from "@/lib/utils";
 import { format, intervalToDuration } from "date-fns";
 
