@@ -1,6 +1,6 @@
 "use server";
 
-import { Movie } from "@/types/tmdb/movie";
+import { Movie, MovieDetails } from "@/types/tmdb/movie";
 
 export async function getTrendingMovies() {
   const res = await fetch(`${process.env.API_URL}/tmdb/trending/movies`);
@@ -9,4 +9,9 @@ export async function getTrendingMovies() {
     results: Array<Movie>;
   };
   return results;
+}
+
+export async function getMovieDetails(id: string) {
+  const res = await fetch(`${process.env.API_URL}/tmdb/movies/${id}`);
+  return (await res.json()) as MovieDetails;
 }

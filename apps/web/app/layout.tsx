@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import localFont from "next/font/local";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import GoogleAdsense from "@/components/googleAdsense";
 import PlausibleProvider from "next-plausible";
 import Footer from "@/components/footer";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const inter = Inter({
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -36,7 +36,7 @@ export default function RootLayout({
       <head>
         <PlausibleProvider domain="pulpmovies.app" selfHosted />
       </head>
-      <body className={`${geistSans.variable} antialiased bg-background`}>
+      <body className={`${inter.className} antialiased bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
           <Footer />
