@@ -26,13 +26,7 @@ jobs:
 
       - name: Build Elysia app
         working-directory: ./apps/api
-        run: bun build \
-              --compile \
-              --minify-whitespace \
-              --minify-syntax \
-              --target bun \
-              --outfile server \
-              ./src/index.ts
+        run: bun build --compile --minify-whitespace --minify-syntax --target bun --outfile server ./src/index.ts
 
       - name: copy built binary to server 
         uses: burnett01/rsync-deployments@7.0.1
