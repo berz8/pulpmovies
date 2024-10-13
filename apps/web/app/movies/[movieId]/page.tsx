@@ -2,6 +2,7 @@ import { getMovieDetails } from "@/actions/tmdb";
 import MovieCard from "@/components/movieCard";
 import { cn } from "@/lib/utils";
 import { format, intervalToDuration } from "date-fns";
+import Link from "next/link";
 
 export default async function MovieDetails({
   params: { movieId },
@@ -64,6 +65,33 @@ export default async function MovieDetails({
             <h1 className="text-2xl md:text-5xl font-black italic">
               {movie.title}
             </h1>
+          </div>
+        </div>
+      </div>
+      <div className="container px-2">
+        <div>
+          <span className="italic font-medium md:text-lg">Directed by </span>
+          {movie.credits?.crew
+            .filter((director) => director.job === "Director")
+            .map((director, index: number, filteredDirectors) => (
+              <Link
+                href={`/person/${director.id}`}
+                key={director.id}
+                className="inline-block font-black md:text-xl italic text-center"
+              >
+                {`${director.name}${
+                  filteredDirectors.length > 1 &&
+                  filteredDirectors.length - 1 !== index
+                    ? ", "
+                    : ""
+                }`}
+              </Link>
+            ))}
+        </div>
+        <div className="flex justify-between mt-3">
+          <div className="w-full md:w-1/2 lg:w-1/3">
+            <h4 className="font-bold">Overview</h4>
+            <p className="opacity-85">{movie.overview}</p>
           </div>
         </div>
       </div>

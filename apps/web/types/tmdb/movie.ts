@@ -1,3 +1,5 @@
+import { Credits } from "./credits";
+
 export interface Movie {
   id: number;
   poster_path: string;
@@ -41,6 +43,7 @@ export interface MovieDetails {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  credits?: Credits;
 }
 
 export interface BelongsToCollection {
