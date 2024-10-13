@@ -38,4 +38,12 @@ jobs:
           remote_user: ${{ secrets.SERVER_USER }} 
           remote_key: ${{ secrets.SERVER_SSH_KEY }}
 
+      - name: restart service 
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            systemctl restart pulpmovies-api.service
 

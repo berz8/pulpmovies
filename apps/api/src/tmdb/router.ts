@@ -20,7 +20,8 @@ export const tmdb = new Elysia({ prefix: "/tmdb" })
         id: t.Number(),
       }),
     },
-  );
+  )
+  .get("/trending/movies", async ({ cache }) => getTrendingMovies(cache));
 
 async function getMovie(cache: RedisCache, id: number) {
   let movie = await cache.get(`movie:${id}`);
@@ -56,6 +57,25 @@ async function getPerson(cache: RedisCache, id: number) {
   if (tmdbPerson) {
     await cache.set(`person:${id}`, JSON.stringify(tmdbPerson));
     return tmdbPerson;
+  }
+  return error(404);
+}
+
+async function getTrendingMovies(cache: RedisCache) {
+  let trending = await cache.get("trending:movies");
+  if (trending) return JSON.parse(trending);
+  const tmdbTrendingData = await fetch(
+    `${process.env.TMDB_URL}/trending/movie/week?language=en`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.TMDB_API_KEY}`,
+      },
+    },
+  );
+  const tmdbTrending = await tmdbTrendingData.json();
+  if (tmdbTrending) {
+    await cache.set(`trending:movies`, JSON.stringify(tmdbTrending));
+    return tmdbTrending;
   }
   return error(404);
 }
