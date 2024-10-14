@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { format, intervalToDuration } from "date-fns";
 import Link from "next/link";
 import WatchOn from "./watchOn";
+import { redirect } from "next/navigation";
 
 export default async function MovieDetails({
   params: { movieId },
@@ -11,6 +12,7 @@ export default async function MovieDetails({
   params: { movieId: string };
 }) {
   const movie = await getMovieDetails(movieId);
+  if (movie.adult) redirect("/");
   const formattedRuntime = () => {
     const runtimeObject = intervalToDuration({
       start: 0,
