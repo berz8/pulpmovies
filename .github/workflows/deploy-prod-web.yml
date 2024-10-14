@@ -32,7 +32,7 @@ jobs:
         uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete
-          path: apps/web/.next apps/web/public apps/web/package.json
+          path: apps/web/.next/static apps/web/public apps/web/standalone/*
           remote_path: /root/pulpmovies/web
           remote_host: ${{ secrets.SERVER_IP }} 
           remote_user: ${{ secrets.SERVER_USER }} 
@@ -45,14 +45,11 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
           script: |
-            export BUN_INSTALL="$HOME/.bun"
-            export PATH=$BUN_INSTALL/bin:$PATH
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
             source ~/.bashrc
             cd /root/pulpmovies/web 
-            bun install --production
 
             pm2 restart /root/pulpmovies/ecosystem.config.js --only web
 
