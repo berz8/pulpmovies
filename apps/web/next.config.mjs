@@ -3,6 +3,7 @@ import { withPlausibleProxy } from "next-plausible";
 const nextConfig = withPlausibleProxy({
   customDomain: "https://analytics.pulpmovies.app",
 })({
+  output: "standalone",
   images: {
     remotePatterns: [
       {
@@ -13,6 +14,7 @@ const nextConfig = withPlausibleProxy({
       },
     ],
   },
+  compress: false,
 });
 
 export default nextConfig;
