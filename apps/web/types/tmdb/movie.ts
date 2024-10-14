@@ -1,4 +1,5 @@
 import { Credits } from "./credits";
+import { WatchProviders } from "./watch-providers";
 
 export interface Movie {
   id: number;
@@ -44,6 +45,7 @@ export interface MovieDetails {
   vote_average: number;
   vote_count: number;
   credits?: Credits;
+  "watch/providers"?: WatchProviders;
 }
 
 export interface BelongsToCollection {

@@ -3,6 +3,7 @@ import MovieCard from "@/components/movieCard";
 import { cn } from "@/lib/utils";
 import { format, intervalToDuration } from "date-fns";
 import Link from "next/link";
+import WatchOn from "./watchOn";
 
 export default async function MovieDetails({
   params: { movieId },
@@ -11,10 +12,9 @@ export default async function MovieDetails({
 }) {
   const movie = await getMovieDetails(movieId);
   const formattedRuntime = () => {
-    const runtimeMinute = movie.runtime;
     const runtimeObject = intervalToDuration({
       start: 0,
-      end: runtimeMinute * 60000,
+      end: movie.runtime * 60000,
     });
     if (runtimeObject.hours && runtimeObject.hours > 0) {
       return `${runtimeObject.hours}h${
@@ -90,6 +90,12 @@ export default async function MovieDetails({
         </div>
         <div className="flex justify-between mt-3">
           <div className="w-full md:w-1/2 lg:w-1/3">
+            {movie["watch/providers"] ? (
+              <WatchOn
+                providers={movie["watch/providers"]}
+                posterPath={posterPath}
+              />
+            ) : null}
             <h4 className="font-bold">Overview</h4>
             <p className="opacity-85">{movie.overview}</p>
           </div>
