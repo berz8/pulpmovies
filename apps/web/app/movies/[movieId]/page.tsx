@@ -53,8 +53,8 @@ export default async function MovieDetails({
                 filter: "blur(24px)",
               }}
             />
-            <div className="relative z-20">
-              <MovieCard movie={movie} />
+            <div className="relative z-30">
+              <MovieCard movie={movie} size={342} />
             </div>
             <div className="relative z-20 flex justify-between pb-1 pt-3 px-2 md:px-3 bg-[rgba(0,0,0,0.3)] text-white text-xs md:text-base rounded-b-lg -mt-2 shadow-lg font-bold">
               <div>{format(movie.release_date, "yyyy")}</div>
