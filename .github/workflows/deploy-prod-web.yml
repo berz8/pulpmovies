@@ -32,8 +32,28 @@ jobs:
         uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete
-          path: apps/web/.next apps/web/public apps/web/package.json apps/web/next.config.mjs
+          path: apps/web/.next/standalone/*
           remote_path: /root/pulpmovies/web
+          remote_host: ${{ secrets.SERVER_IP }} 
+          remote_user: ${{ secrets.SERVER_USER }} 
+          remote_key: ${{ secrets.SERVER_SSH_KEY }}
+
+      - name: copy public to server 
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          path: apps/web/public
+          remote_path: /root/pulpmovies/web/apps/web
+          remote_host: ${{ secrets.SERVER_IP }} 
+          remote_user: ${{ secrets.SERVER_USER }} 
+          remote_key: ${{ secrets.SERVER_SSH_KEY }}
+          
+      - name: copy static to server 
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          path: apps/web/.next/static
+          remote_path: /root/pulpmovies/web/apps/web/.next 
           remote_host: ${{ secrets.SERVER_IP }} 
           remote_user: ${{ secrets.SERVER_USER }} 
           remote_key: ${{ secrets.SERVER_SSH_KEY }}
