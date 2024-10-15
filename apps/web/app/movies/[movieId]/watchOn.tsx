@@ -24,7 +24,7 @@ export default function WatchOn({
 }) {
   return (
     <Drawer.Root>
-      <Drawer.Trigger className="w-full">
+      <Drawer.Trigger asChild>
         <div
           className={cn(
             "relative mt-2 mb-8 flex gap-6 items-center justify-between -mx-2 p-2 rounded-lg text-background shadow-lg",
