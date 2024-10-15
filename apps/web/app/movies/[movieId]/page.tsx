@@ -32,17 +32,22 @@ export default async function MovieDetails({
 
   return (
     <div className="container mt-2 md:mt-4 mx-auto px-2">
-      <div className="w-full py-3 md:py-6 rounded-r-xl relative">
+      <div className="w-full py-3 md:py-6 rounded-l-xl relative">
         <div
-          className="absolute right-0 top-0 w-4/5 h-full bg-cover rounded-r-xl"
+          className="absolute left-0 top-0 w-4/5 h-full bg-cover rounded-l-xl"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
           }}
         >
-          <div className="bg-gradient-to-r from-background via-transparent via-30% to-transparent absolute top-0 left-0 w-full h-full" />
-          <div className="bg-gradient-to-t from-background via-background via-30% to-transparent absolute bottom-0 left-0 w-full h-2/3 md:h-1/2" />
+          <div className="bg-gradient-to-l from-background via-transparent via-30% to-transparent absolute top-0 right-0 w-full h-full" />
+          <div className="bg-gradient-to-t from-background via-background via-30% to-transparent absolute bottom-0 right-0 w-full h-2/3 md:h-1/2" />
         </div>
-        <div className="flex gap-3 md:gap-6 items-end">
+        <div className="flex gap-3 md:gap-6 justify-end items-end">
+          <div className="relative z-20 grow px-2">
+            <h1 className="text-2xl md:text-5xl font-black italic">
+              {movie.title}
+            </h1>
+          </div>
           <div className={cn("relative w-[130px] md:w-[200px] lg:w-[250px]")}>
             <div
               className={cn(
@@ -63,14 +68,9 @@ export default async function MovieDetails({
               <div>{formattedRuntime()}</div>
             </div>
           </div>
-          <div className="relative z-20">
-            <h1 className="text-2xl md:text-5xl font-black italic">
-              {movie.title}
-            </h1>
-          </div>
         </div>
       </div>
-      <div className="container px-2">
+      <div className="container px-2 -mt-2 relative z-20">
         <div>
           <span className="italic font-medium md:text-lg">Directed by </span>
           {movie.credits?.crew
@@ -90,7 +90,7 @@ export default async function MovieDetails({
               </Link>
             ))}
         </div>
-        <div className="flex justify-between mt-3">
+        <div className="flex justify-between mt-4">
           <div className="w-full md:w-1/2 lg:w-1/3">
             {movie["watch/providers"] ? (
               <WatchOn

@@ -27,7 +27,7 @@ export default function WatchOn({
       <Drawer.Trigger asChild>
         <div
           className={cn(
-            "relative mt-2 mb-8 flex gap-6 items-center justify-between -mx-2 p-2 rounded-lg text-background shadow-lg",
+            "relative overflow-hidden md:mt-1 mb-3 md:mb-8 flex gap-6 items-center justify-between -mx-2 p-2 rounded-lg text-background shadow-lg",
           )}
         >
           <div
@@ -54,46 +54,53 @@ export default function WatchOn({
               </ProviderSection>
             </div>
           )}
-          <ChevronRight className="w-6 h-6 ml-6 text-background relative z-20" />
+          <ChevronRight className="w-6 h-6 text-background relative z-20" />
         </div>
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40 z-30" />
-        <Drawer.Content className="bg-background h-fit fixed bottom-0 left-0 right-0 outline-none z-30 pt-2">
-          <Drawer.Handle />
-          <Drawer.Title className="p-4 pb-6 font-bold text-lg md:text-xl max-w-72 mx-auto">
-            Watch, Buy or Rent on:
-          </Drawer.Title>
-          <div className="p-4 pb-24 md:pb-40 lg:pb-72 max-w-72 m-auto">
-            {!providers.results[country] ? (
-              <div className="relative z-20 opacity-80 dark:opacity-100 text-sm italic">
-                No digital release in your country
-              </div>
-            ) : (
-              <div className="flex  flex-col gap-3">
-                <ProviderSection
-                  items={providers.results[country].flatrate}
-                  expanded
-                >
-                  <Tv className="w-5 h-5" />
-                  <span>Streaming</span>
-                </ProviderSection>
-                <ProviderSection
-                  items={providers.results[country].buy}
-                  expanded
-                >
-                  <DollarSign className="w-5 h-5" />
-                  <span>Buy</span>
-                </ProviderSection>
-                <ProviderSection
-                  items={providers.results[country].rent}
-                  expanded
-                >
-                  <Hourglass className="w-5 h-5" />
-                  <span>Rent</span>
-                </ProviderSection>
-              </div>
-            )}
+        <Drawer.Content
+          className={cn(
+            "overflow-hidden rounded-3xl w-[calc(100%-2rem)] h-fit fixed bottom-4 left-0 right-0 outline-none z-30",
+            "md:bottom-12 md:w-[500px] mx-auto",
+          )}
+        >
+          <div className="bg-background pt-2">
+            <Drawer.Handle className="cursor-pointer" />
+            <Drawer.Title className="p-4 pb-6 font-bold text-lg md:text-xl max-w-72 mx-auto">
+              Watch, Buy or Rent on:
+            </Drawer.Title>
+            <div className="p-4 pb-8 md:pb-8 max-w-72 md:w-fit md:max-w-fit m-auto">
+              {!providers.results[country] ? (
+                <div className="relative z-20 opacity-80 dark:opacity-100 text-sm italic">
+                  No digital release in your country
+                </div>
+              ) : (
+                <div className="flex flex-col gap-3 md:gap-6">
+                  <ProviderSection
+                    items={providers.results[country].flatrate}
+                    expanded
+                  >
+                    <Tv className="w-5 h-5" />
+                    <span>Streaming</span>
+                  </ProviderSection>
+                  <ProviderSection
+                    items={providers.results[country].buy}
+                    expanded
+                  >
+                    <DollarSign className="w-5 h-5" />
+                    <span>Buy</span>
+                  </ProviderSection>
+                  <ProviderSection
+                    items={providers.results[country].rent}
+                    expanded
+                  >
+                    <Hourglass className="w-5 h-5" />
+                    <span>Rent</span>
+                  </ProviderSection>
+                </div>
+              )}
+            </div>
           </div>
         </Drawer.Content>
       </Drawer.Portal>
@@ -115,7 +122,9 @@ function ProviderSection({
     <div
       className={cn(
         "relative z-10 flex gap-2",
-        expanded ? "flex-col gap-4 pb-2" : "items-center",
+        expanded
+          ? "flex-col gap-4 pb-2 md:justify-center md:items-center"
+          : "items-center",
       )}
     >
       <div className="flex gap-2 items-center">{children}</div>
