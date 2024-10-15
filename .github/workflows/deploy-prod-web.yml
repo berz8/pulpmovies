@@ -32,7 +32,7 @@ jobs:
         uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete
-          path: apps/web/.next apps/web/public apps/web/package.json next.config.mjs
+          path: apps/web/.next apps/web/public apps/web/package.json apps/web/next.config.mjs
           remote_path: /root/pulpmovies/web
           remote_host: ${{ secrets.SERVER_IP }} 
           remote_user: ${{ secrets.SERVER_USER }} 
