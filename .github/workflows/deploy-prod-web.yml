@@ -21,18 +21,18 @@ jobs:
           bun-version: latest  # or specify a version
 
       - name: Install dependencies
-        working-directory: ./apps/web
-        run: bun install
+        working-directory: ./
+        run: bun install --frozen-lockfile
 
       - name: Build Next.js app
-        working-directory: ./apps/web
-        run: NODE_ENV=production API_URL=${{ secrets.API_URL }} bun run build
+        working-directory: ./
+        run: NODE_ENV=production API_URL=${{ secrets.API_URL }} bun run build --filter=web
 
       - name: copy build to server 
         uses: burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete
-          path: apps/web/.next/static apps/web/public apps/web/.next/standalone/*
+          path: apps/web/.next apps/web/public apps/web/package.json next.config.mjs
           remote_path: /root/pulpmovies/web
           remote_host: ${{ secrets.SERVER_IP }} 
           remote_user: ${{ secrets.SERVER_USER }} 
