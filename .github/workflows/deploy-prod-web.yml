@@ -26,7 +26,7 @@ jobs:
 
       - name: Build Next.js app
         working-directory: ./
-        run: NODE_ENV=production API_URL=${{ secrets.API_URL }} bun run build --filter=web
+        run: API_URL=${{ secrets.API_URL }} bun run build --filter=web
 
       - name: copy build to server 
         uses: burnett01/rsync-deployments@7.0.1

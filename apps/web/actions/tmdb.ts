@@ -3,7 +3,9 @@
 import { Movie, MovieDetails } from "@/types/tmdb/movie";
 
 export async function getTrendingMovies() {
-  const res = await fetch(`${process.env.API_URL}/tmdb/trending/movies`);
+  const res = await fetch(`${process.env.API_URL}/tmdb/trending/movies`, {
+    next: { revalidate: 1440 },
+  });
   const { results } = (await res.json()) as {
     page: number;
     results: Array<Movie>;
