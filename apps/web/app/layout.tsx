@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-import GoogleAdsense from "@/components/googleAdsense";
 import PlausibleProvider from "next-plausible";
 import Footer from "@/components/footer";
 
@@ -42,7 +41,6 @@ export default function RootLayout({
           <Footer />
         </ThemeProvider>
       </body>
-      <GoogleAdsense pId={process.env.GOOGLE_ADSENSE_PID ?? ""} />
     </html>
   );
 }
