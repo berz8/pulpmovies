@@ -11,7 +11,7 @@ export default async function MovieDetails({
 }: {
   params: { movieId: string };
 }) {
-  const movie = await getMovieDetails(movieId);
+  const movie = await getMovieDetails(movieId.split("-")[0]);
   if (movie.adult) redirect("/");
   const formattedRuntime = () => {
     const runtimeObject = intervalToDuration({

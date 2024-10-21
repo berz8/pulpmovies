@@ -1,6 +1,7 @@
 import { Movie } from "@/types/tmdb/movie";
 import { AspectRatio } from "./ui/aspect-ratio";
 import Link from "next/link";
+import slugify from "slugify";
 
 export default function MovieCard({
   movie,
@@ -15,7 +16,7 @@ export default function MovieCard({
 
   return (
     <Link
-      href={`/movies/${movie.id}`}
+      href={`/movies/${movie.id}-${movie.title && slugify(movie.title).toLowerCase()}`}
       className="w-full cursor-pointer hover:scale-110 transition-all duration-300"
     >
       <AspectRatio ratio={500 / 750}>
