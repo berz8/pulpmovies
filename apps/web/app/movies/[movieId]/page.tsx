@@ -35,7 +35,7 @@ export default async function MovieDetails({
     <div className="container mt-2 md:mt-4 mx-auto px-2">
       <div className="w-full py-3 md:py-6 rounded-l-xl relative">
         <div
-          className="absolute left-0 top-0 w-4/5 h-full bg-cover rounded-l-xl"
+          className="absolute left-0 top-0 w-4/5 lg:w-5/6 h-full bg-cover rounded-l-xl"
           style={{
             backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
           }}

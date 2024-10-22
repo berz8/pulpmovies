@@ -27,7 +27,7 @@ export default function WatchOn({
       <Drawer.Trigger asChild>
         <div
           className={cn(
-            "relative overflow-hidden md:mt-1 mb-3 md:mb-8 flex gap-6 items-center justify-between -mx-2 p-2 rounded-lg text-background shadow-lg",
+            "relative cursor-pointer overflow-hidden md:mt-1 mb-3 md:mb-8 flex gap-6 items-center justify-between -mx-2 p-2 rounded-lg text-background shadow-lg",
           )}
         >
           <div
