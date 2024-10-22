@@ -5,6 +5,7 @@ import { format, intervalToDuration } from "date-fns";
 import Link from "next/link";
 import WatchOn from "./watchOn";
 import { redirect } from "next/navigation";
+import slugify from "slugify";
 
 export default async function MovieDetails({
   params: { movieId },
@@ -77,7 +78,7 @@ export default async function MovieDetails({
             .filter((director) => director.job === "Director")
             .map((director, index: number, filteredDirectors) => (
               <Link
-                href={`/person/${director.id}`}
+                href={`/person/${director.id}-${slugify(director.name.toLowerCase(), { strict: true })}`}
                 key={director.id}
                 className="inline-block font-black md:text-xl italic text-center"
               >

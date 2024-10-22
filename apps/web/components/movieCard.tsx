@@ -16,7 +16,12 @@ export default function MovieCard({
 
   return (
     <Link
-      href={`/movies/${movie.id}-${movie.title && slugify(movie.title).toLowerCase()}`}
+      href={`/movies/${movie.id}-${
+        movie.title &&
+        slugify(movie.title, {
+          strict: true,
+        }).toLowerCase()
+      }`}
       className="w-full cursor-pointer hover:scale-110 transition-all duration-300"
     >
       <AspectRatio ratio={500 / 750}>
