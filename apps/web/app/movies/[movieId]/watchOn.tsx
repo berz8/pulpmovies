@@ -10,6 +10,7 @@ import {
 import { AspectRatio } from "@radix-ui/react-aspect-ratio";
 import { ChevronRight, DollarSign, Hourglass, Tv } from "lucide-react";
 import Image from "next/image";
+import { ReactNode } from "react";
 import { Drawer } from "vaul";
 
 export default function WatchOn({
@@ -113,7 +114,7 @@ function ProviderSection({
   expanded = false,
 }: {
   items: Flatrate[] | Buy[] | Rent[] | undefined;
-  children?: React.ReactNode;
+  children: ReactNode;
   expanded?: boolean;
 }) {
   if (!items) return null;
