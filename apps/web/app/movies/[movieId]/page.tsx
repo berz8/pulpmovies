@@ -7,17 +7,11 @@ import WatchOn from "./watchOn";
 import { redirect } from "next/navigation";
 import slugify from "slugify";
 
-export default async function MovieDetails(
-  props: {
-    params: Promise<{ movieId: string }>;
-  }
-) {
-  const params = await props.params;
-
-  const {
-    movieId
-  } = params;
-
+export default async function MovieDetails({
+  params: { movieId },
+}: {
+  params: { movieId: string };
+}) {
   const movie = await getMovieDetails(movieId.split("-")[0]);
   if (movie.adult) redirect("/");
   const formattedRuntime = () => {
