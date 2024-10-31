@@ -36,7 +36,7 @@ export default function RootLayout({
         <PlausibleProvider domain="pulpmovies.app" selfHosted />
       </head>
       <body className={`${inter.className} antialiased bg-background`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           {children}
           <Footer />
         </ThemeProvider>
