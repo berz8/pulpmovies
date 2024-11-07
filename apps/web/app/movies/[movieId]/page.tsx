@@ -3,10 +3,10 @@ import MovieCard from "@/components/movie-card";
 import { cn } from "@/lib/utils";
 import { format, intervalToDuration } from "date-fns";
 import Link from "next/link";
-import WatchOn from "./watchOn";
+import WatchOn from "./watch-on";
 import { redirect } from "next/navigation";
 import slugify from "slugify";
-import Credits from "./credits";
+import Credits from "./credits-preview";
 import { Metadata } from "next";
 
 type Props = {
@@ -24,9 +24,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			title: `${movie.title} - Pulpmovies`,
 			description: movie.overview,
 			images: [
-				!movie.poster_path
+				!movie.backdrop_path
 					? "/images/fallback-movie.jpg"
-					: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+					: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
 			],
 		},
 	};
@@ -129,7 +129,17 @@ export default async function MovieDetails({
 						<p className="opacity-85">{movie.overview}</p>
 					</div>
 					<div className="w-full md:w-1/2 lg:w-2/3">
-						{movie.credits ? <Credits credits={movie.credits} /> : null}
+						{movie.credits ? (
+							<Credits
+								credits={movie.credits}
+								movieUrl={`/movies/${movie.id}-${
+									movie.title &&
+									slugify(movie.title, {
+										strict: true,
+									}).toLowerCase()
+								}`}
+							/>
+						) : null}
 					</div>
 				</div>
 			</div>
