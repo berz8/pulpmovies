@@ -1,5 +1,5 @@
 import { getMovieDetails } from "@/actions/tmdb";
-import MovieCard from "@/components/movieCard";
+import MovieCard from "@/components/movie-card";
 import { cn } from "@/lib/utils";
 import { format, intervalToDuration } from "date-fns";
 import Link from "next/link";
@@ -7,6 +7,30 @@ import WatchOn from "./watchOn";
 import { redirect } from "next/navigation";
 import slugify from "slugify";
 import Credits from "./credits";
+import { Metadata } from "next";
+
+type Props = {
+	params: Promise<{ movieId: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const id = (await params).movieId;
+	const movie = await getMovieDetails(id.split("-")[0]);
+
+	return {
+		title: `${movie.title} - Pulpmovies`,
+		description: movie.overview,
+		openGraph: {
+			title: `${movie.title} - Pulpmovies`,
+			description: movie.overview,
+			images: [
+				!movie.poster_path
+					? "/images/fallback-movie.jpg"
+					: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
+			],
+		},
+	};
+}
 
 export default async function MovieDetails({
 	params: { movieId },
@@ -15,6 +39,7 @@ export default async function MovieDetails({
 }) {
 	const movie = await getMovieDetails(movieId.split("-")[0]);
 	if (movie.adult) redirect("/");
+
 	const formattedRuntime = () => {
 		const runtimeObject = intervalToDuration({
 			start: 0,
