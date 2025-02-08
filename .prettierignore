@@ -1,0 +1,47 @@
+turbo.json
+
+# Ignore node_modules directories
+node_modules/
+
+# Ignore build and dist folders
+**/build/
+**/dist/
+**/.next/
+**/.turbo/
+**/.vercel/
+
+# Ignore package-lock.json, yarn.lock, pnpm-lock.yaml (lock files)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Ignore .next.js directories (Next.js specific build output)
+.next/
+
+# Ignore generated files
+*.min.js
+*.min.css
+*.map
+
+# Ignore config files that don't need formatting
+**/babel.config.js
+**/webpack.config.js
+**/next.config.js
+**/tsconfig.json
+**/jest.config.js
+**/postcss.config.js
+**/eslint.config.js
+**/.eslintrc.js
+
+# Ignore test output files
+coverage/
+
+# Ignore Next.js specific files
+.vercel/
+
+# Ignore Elisya.js generated files (if any)
+.elisya/
+
+# Ignore README or documentation files (if preferred)
+README.md
