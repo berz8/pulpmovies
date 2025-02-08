@@ -36,7 +36,7 @@ export interface MovieDetails {
   production_countries: ProductionCountry[];
   release_date: string;
   revenue: number;
-  runtime: number;
+  runtime: number | undefined;
   spoken_languages: SpokenLanguage[];
   status: string;
   tagline: string;
