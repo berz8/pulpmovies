@@ -127,7 +127,16 @@ export default async function MovieDetails({
 							/>
 						) : null}
 						<h4 className="font-bold">Overview</h4>
-						<p className="opacity-85">{movie.overview}</p>
+						<p className="opacity-85 text-sm md:text-base">{movie.overview}</p>
+            {movie.genres.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-2">
+                {movie.genres.map((genre) => (
+                  <div key={genre.id} className="bg-white/20 rounded-lg px-2 py-1 md:px-3 md:py-1.5 text-xs md:text-sm">
+                    {genre.name}
+                  </div>
+                ))}
+              </div>
+            )}
 					</div>
 					<div className="w-full md:w-1/2 lg:w-2/3">
 						{movie.credits ? (
