@@ -41,7 +41,7 @@ export default async function MovieDetails({
 	if (movie.adult) redirect("/");
 
 	const formattedRuntime = () => {
-    if (movie.runtime === null || movie.runtime === undefined) return "TBA";
+    if (movie.runtime === 0) return "TBA";
 		const runtimeObject = intervalToDuration({
 			start: 0,
 			end: movie.runtime * 60000,
