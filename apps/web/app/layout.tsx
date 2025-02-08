@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import PlausibleProvider from "next-plausible";
 import Footer from "@/components/footer";
+import Header from "@/components/header";
 
 const inter = Inter({
   style: ["normal", "italic"],
@@ -37,6 +38,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} antialiased bg-background`}>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <Header />
           {children}
           <Footer />
         </ThemeProvider>
