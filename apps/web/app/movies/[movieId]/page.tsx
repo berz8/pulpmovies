@@ -32,16 +32,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function MovieDetails(
-  props: {
-    params: Promise<{ movieId: string }>;
-  }
-) {
+export default async function MovieDetails(props: {
+  params: Promise<{ movieId: string }>;
+}) {
   const params = await props.params;
 
-  const {
-    movieId
-  } = params;
+  const { movieId } = params;
 
   const movie = await getMovieDetails(movieId.split("-")[0]);
   if (movie.adult) redirect("/");
