@@ -73,8 +73,8 @@ export default async function MovieDetails(
             backgroundImage: `url(https://image.tmdb.org/t/p/w1280${movie.backdrop_path})`,
           }}
         >
-          <div className="bg-gradient-to-l from-background via-transparent via-30% to-transparent absolute top-0 right-0 w-full h-full" />
-          <div className="bg-gradient-to-t from-background via-background via-30% to-transparent absolute bottom-0 right-0 w-full h-2/3 md:h-1/2" />
+          <div className="bg-linear-to-l from-background via-transparent via-30% to-transparent absolute top-0 right-0 w-full h-full" />
+          <div className="bg-linear-to-t from-background via-background via-30% to-transparent absolute bottom-0 right-0 w-full h-2/3 md:h-1/2" />
         </div>
         <div className="flex gap-3 md:gap-6 justify-end items-end">
           <div className="relative z-20 grow px-2">

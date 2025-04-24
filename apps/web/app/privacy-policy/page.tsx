@@ -5,7 +5,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="px-3 mt-8 mb-24 text-gray-900 dark:text-gray-50 container m-auto">
       <div className="mt-8 flex items-center justify-center gap-4 dark:gap-1">
-        <div className="glowing rounded-xl md:rounded-3xl shadow-2xl p-3 dark:p-0 md:p-4 flex items-center justify-center bg-gradient-to-br from-[#6400E2] to-[#341C97] dark:bg-none dark:shadow-none">
+        <div className="glowing rounded-xl md:rounded-3xl shadow-2xl p-3 dark:p-0 md:p-4 flex items-center justify-center bg-linear-to-br from-[#6400E2] to-[#341C97] dark:bg-none dark:shadow-none">
           <div className="w-10 md:w-16 dark:md:w-20">
             <Logo />
           </div>

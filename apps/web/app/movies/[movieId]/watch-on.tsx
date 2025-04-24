@@ -61,7 +61,7 @@ export default function WatchOn({
         <Drawer.Overlay className="fixed inset-0 bg-black/40 z-30" />
         <Drawer.Content
           className={cn(
-            "overflow-hidden rounded-3xl w-[calc(100%-2rem)] h-fit fixed bottom-4 left-0 right-0 outline-none z-30",
+            "overflow-hidden rounded-3xl w-[calc(100%-2rem)] h-fit fixed bottom-4 left-0 right-0 outline-hidden z-30",
             "md:bottom-12 md:w-[500px] mx-auto",
           )}
         >
