@@ -7,7 +7,7 @@ import WatchOn from "./watch-on";
 import { redirect } from "next/navigation";
 import slugify from "slugify";
 import Credits from "./credits-preview";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 type Props = {
   params: Promise<{ movieId: string }>;
@@ -50,7 +50,7 @@ export default async function MovieDetails(props: {
     });
     if (runtimeObject.hours && runtimeObject.hours > 0) {
       return `${runtimeObject.hours}h${
-        runtimeObject.minutes ? runtimeObject.minutes + "m" : ""
+        runtimeObject.minutes ? `${runtimeObject.minutes}m` : ""
       }`;
     }
     return `${runtimeObject.minutes}m`;
@@ -61,7 +61,7 @@ export default async function MovieDetails(props: {
     : `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
 
   return (
-    <div className="container mt-2 md:mt-4 mx-auto px-2">
+    <div className="container mt-2 mx-auto px-2">
       <div className="w-full py-3 md:py-6 rounded-l-xl relative">
         <div
           className="absolute left-0 top-0 w-4/5 lg:w-5/6 h-full bg-cover rounded-l-xl"
